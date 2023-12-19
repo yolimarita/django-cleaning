@@ -32,11 +32,11 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
-#X_FRAME_OPTIONS = "DENY"
+
 # Application definition
 
 INSTALLED_APPS = [
-    #'render.apps.RenderConfig',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    
    
 
 ]
@@ -78,12 +79,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangocrud.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-
 
 
 # Configuración para la base de datos utilizando dj_database_url
@@ -123,42 +118,22 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-
-#STATICFILES_DIRS =[os.path.join(BASE_DIR, 'users', 'static''templates')]
-
-#STATIC_URL = 'static/' 
-# STATIC_ROOT = BASE_DIR / 'static'
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-#STATIC_URL = '/static/'
-
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'users/static'),
-#]
-# settings.py
-
-import os
-
 # Directorio base de tu proyecto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Configuración para archivos estáticos
 STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'users/static')]
 
 # Configuración específica para entorno de producción (WhiteNoise)
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+else:
+    # Configuración para entorno de desarrollo
+    STATICFILES_DIRS += [os.path.join(BASE_DIR, 'users/static')]
 
 # Configuración para archivos multimedia
 MEDIA_URL = '/media/'
@@ -169,10 +144,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# Media files (Uploaded files)
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#MEDIA_ROOT = BASE_DIR / 'media'
+
 
 LOGGING = {
     'version': 1,
@@ -187,7 +159,7 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
-# settings.py
+
 
 # Configuración del servidor de correo saliente (SMTP) para Gmail
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
