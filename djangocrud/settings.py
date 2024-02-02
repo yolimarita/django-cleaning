@@ -124,13 +124,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # # Configuración para archivos estáticos
 # STATIC_URL = '/static/'
 # Configuración para archivos estáticos
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'users/static')]
 # Configuración para archivos estáticos
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
 
 # Configuración específica para entorno de producción (WhiteNoise)
 if not DEBUG:
