@@ -20,6 +20,9 @@ from django.urls import path
 from users import views  # Importa las vistas desde el mismo directorio (users)
 from django.conf import settings
 from django.conf.urls.static import static
+from users.views import process_contact_form
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,9 +37,10 @@ urlpatterns = [
     path('solicitar_servicio/', views.solicitar_servicio, name="solicitar_servicio"),
     path('register/', views.registro_perfil, name='registro_perfil'),
     path('ver_perfil/<int:perfil_id>/', views.ver_perfil, name='ver_perfil'),
-    
+    path('process_contact_form/', process_contact_form, name='process_contact_form'),
+]
 
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # myproject/urls.py

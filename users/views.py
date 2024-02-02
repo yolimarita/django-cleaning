@@ -12,11 +12,22 @@ from django.core.mail import send_mail
 from django import forms
 
 
+def process_contact_form(request):
+    if request.method == 'POST':
+        # Procesar los datos del formulario aquí
+        # Puedes acceder a los datos utilizando request.POST.get('nombre_del_campo')
+        return HttpResponse("¡Formulario recibido correctamente!")
+
+    # Si la solicitud no es POST, puedes manejarlo de acuerdo a tus necesidades
+    return render(request, 'tu_template.html')  # Ajusta 'tu_template.html' según tu estructura de carpetas
+
+
 class AceptarForm(forms.Form):
     aceptar = forms.BooleanField(label='¿Aceptar este perfil?')
 
 def ver_perfil(request, perfil_id):
     perfil = get_object_or_404(PerfilEmpleado, id=perfil_id)
+    #servicios_calificados = perfil.servicios_calificados.all()
 
     if request.method == 'POST':
         form = AceptarForm(request.POST)

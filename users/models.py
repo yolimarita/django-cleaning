@@ -11,6 +11,13 @@ class PerfilEmpleado(models.Model):
     email = models.EmailField(max_length=255)
     foto_perfil = models.ImageField(upload_to='perfil_empleado/', null=True, blank=True)
     habilidades = models.TextField(max_length=255)
+    referencia1_nombre = models.CharField(max_length=45, default='Sin referencia')
+    referencia1_telefono = models.CharField(max_length=15, default='Sin teléfono')
+    referencia2_nombre = models.CharField(max_length=45, default='Sin referencia')
+    referencia2_telefono = models.CharField(max_length=15, default='Sin teléfono')
+    referencia3_nombre = models.CharField(max_length=45, default='Sin referencia')
+    referencia3_telefono = models.CharField(max_length=15, default='Sin teléfono')
+    servicios_calificados = models.ManyToManyField('Servicio', related_name='empleados_calificados', blank=True)
 
 class Servicio(models.Model):
     TIPOS_SERVICIO = [

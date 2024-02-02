@@ -1,11 +1,33 @@
+<!-- ruta_de_tu_plantilla.html -->
 
-<!-- ver_perfil.html -->
-<h1>{{ perfil.nombre_completo }}</h1>
+<h2>Información del Perfil</h2>
 <img src="{{ perfil.foto_perfil.url }}" alt="Foto de Perfil">
-<p>Habilidades: {{ perfil.habilidades }}</p>
-<p>numero_celular: {{ perfil.numero_celular }}</p>
-<p>email: {{ perfil.email }}</p>
-<p>zona_trabajo: {{ perfil.zona_trabajo }}</p>
+<p><strong>Nombre Completo:</strong> {{ perfil.nombre_completo }}</p>
+<p><strong>Número Celular:</strong> {{ perfil.numero_celular }}</p>
+<p><strong>Zona de Trabajo:</strong> {{ perfil.zona_trabajo }}</p>
+<p><strong>Email:</strong> {{ perfil.email }}</p>
+<p><strong>Habilidades:</strong> {{ perfil.habilidades }}</p>
+
+<!-- Mostrar referencias -->
+<h3>Referencias</h3>
+<p><strong>Referencia 1:</strong> Nombre: {{ perfil.referencia1_nombre }}, Teléfono: {{ perfil.referencia1_telefono }}</p>
+<p><strong>Referencia 2:</strong> Nombre: {{ perfil.referencia2_nombre }}, Teléfono: {{ perfil.referencia2_telefono }}</p>
+<p><strong>Referencia 3:</strong> Nombre: {{ perfil.referencia3_nombre }}, Teléfono: {{ perfil.referencia3_telefono }}</p>
+<!-- 
+<h3>Servicios Calificados:</h3>
+<ul>
+    {% for servicio in servicios_calificados %}
+        <li>
+            Tipo de Servicio: {{ servicio.tipo_servicio }}<br>
+            Tipo de Pago: {{ servicio.tipo_pago }}<br>
+            Calificación del Cliente: 
+            {% for i in servicio.calificacion_cliente %}
+                ★
+             {% endfor %}
+        </li>
+    {% endfor %}
+</ul> -->
+
 
 <!-- Agrega más detalles del perfil según sea necesario -->
 
